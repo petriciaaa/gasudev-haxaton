@@ -1,0 +1,54 @@
+@import "/src/assets/scss/colors.scss";
+
+.description {
+  min-height: 24rem;
+  width: 100%;
+
+  &-wrapper {
+    width: 91.66%;
+    min-height: 24rem;
+  }
+}
+
+.description__title {
+  font-family: "Mak Light";
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.description__specification {
+  font-family: "Open Sans";
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.description__cards {
+  width: 90%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 660px) {
+    flex-direction: column;
+  }
+}
+.description__card {
+  width: 32%;
+  min-height: 24rem;
+  padding: 1rem;
+
+  &__title {
+    font-family: "Open Sans ";
+    font-size: 30px;
+    font-weight: 700;
+  }
+  &__info {
+    font-family: "Open Sans ";
+    font-size: 20px;
+    font-weight: 500;
+  }
+  @media (max-width: 660px) {
+    width: 100%;
+  }
+}
