@@ -8,7 +8,7 @@ import "src/assets/scss/main.scss";
 const App = () => {
   const baseUrl = "/";
   const currentPath = useLocation();
-  console.log(currentPath.pathname);
+
   return (
     <>
       {<Header />}

@@ -23,6 +23,7 @@ interface ILoginState {
 
 export interface IInitialState {
   isAuth: boolean;
+  isAdmin: boolean;
   user: IUser;
   //   registration: IRegistrationState;
   login: ILoginState;

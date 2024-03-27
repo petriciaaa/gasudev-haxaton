@@ -8,11 +8,14 @@ import { IInitialState } from "./../types/store";
 import { teamReducer } from "./reducers/teamReducers";
 
 import pidrila from "src/assets/images/pidrila.png";
+import { adminReducer } from "./reducers/adminReducers";
 
 //Init store
 export const initialState: IInitialState = {
   isAuth: false,
-
+  isAdmin: localStorage.getItem("isCurrentUserAdmin")
+    ? JSON.parse(localStorage.getItem("isCurrentUserAdmin"))
+    : true,
   user: localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser"))
     : {
@@ -32,8 +35,49 @@ export const initialState: IInitialState = {
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,
+        additionalInfo: null,
+      },
+      {
+        fullName: "Ivan Govnoed",
+        post: "son of a bitch",
+        photo: pidrila,
         additionalInfo:
-          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddddd dddd ddddddd  ddddd ddd dddddd dddddddd dddddd dd dddddd ddddddd",
+          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
+      },
+      {
+        fullName: "Ivan Govnoed",
+        post: "son of a bitch",
+        photo: pidrila,
+        additionalInfo:
+          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
+      },
+      {
+        fullName: "Ivan Govnoed",
+        post: "son of a bitch",
+        photo: pidrila,
+        additionalInfo:
+          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
+      },
+      {
+        fullName: "Ivan Govnoed",
+        post: "son of a bitch",
+        photo: pidrila,
+        additionalInfo:
+          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
+      },
+      {
+        fullName: "Ivan Govnoed",
+        post: "son of a bitch",
+        photo: pidrila,
+        additionalInfo:
+          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
+      },
+      {
+        fullName: "Ivan Govnoed",
+        post: "son of a bitch",
+        photo: pidrila,
+        additionalInfo:
+          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
       },
       {
         fullName: "Ivan Govnoed",
@@ -53,6 +97,7 @@ const rootReducer = combineReducers({
   loginReducer,
   changeUserInfoReducer,
   teamReducer,
+  adminReducer,
 });
 
 const store = legacy_createStore(rootReducer);

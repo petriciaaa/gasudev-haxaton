@@ -1,14 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 //Do not forget to use useEffect hook!
-const NewsList =   () => {
-  
+const NewsList = () => {
   // const news = await fetch('http://localhost:8000/api/news', )
-  
-  return (
-    <>
-      sdfsd
-    </>
-  );
+
+  return <></>;
 };
 export default NewsList;

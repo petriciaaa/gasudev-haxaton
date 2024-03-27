@@ -10,7 +10,6 @@ import { ReactComponent as Account } from "src/assets/icons/account.svg";
 import { ReactComponent as GasuSite } from "src/assets/icons/gasu.svg";
 import { useDispatch, useSelector } from "react-redux";
 import "./header.scss";
-import { IInitialState } from "./../../../types/store";
 
 const Header: React.FC = () => {
   // Почему мы обращаемся к редьюсеру, а не к стейту?
@@ -18,8 +17,9 @@ const Header: React.FC = () => {
   const username = useSelector<any, any>(
     (state) => state.registrationReducer.username
   );
-    console.log(username);
-    
+  const isAdmin = useSelector<any, any>((state) => state.adminReducer);
+  console.log(isAdmin);
+
   const dispatch = useDispatch();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,12 +57,15 @@ const Header: React.FC = () => {
             {/* {<Portal className="mr-1 mt-1" />} */}
             Новости
           </NavLink>
-          <NavLink to={"https://www.spbgasu.ru/"} className="header__nav__element link flex">
+          <NavLink
+            to={"https://www.spbgasu.ru/"}
+            className="header__nav__element link flex"
+          >
             {" "}
             {/* {<GasuSite />} */}
             СПБГАСУ
           </NavLink>
-          {true && (
+          {isAdmin && (
             <NavLink
               to={"/dashboard"}
               className="header__nav__element flex link mr-7  "
@@ -131,7 +134,7 @@ const Header: React.FC = () => {
               {<GasuSite />}
               СПБГАСУ
             </NavLink>
-            {true && (
+            {isAdmin && (
               <NavLink
                 to={"/dashboard"}
                 className="header__nav__element flex link mr-7  items-center justify-center "
