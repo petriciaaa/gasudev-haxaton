@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import MemberCard from "./MemberCard";
 import { useSelector } from "react-redux";
 import { teamReducer } from "./../../store/reducers/teamReducers";
+import userImage1  from "src/assets/svg/human1.svg"
+import userImage2  from "src/assets/svg/human2.svg"
+import userImage3  from "src/assets/svg/human3.svg"
+import userImage4 from "src/assets/svg/human4.svg"
+
 import "./team.scss";
 
 const TeamList = () => {
@@ -11,11 +16,15 @@ const TeamList = () => {
   const teamMembersInfo = teamInfo.membersInfo;
 
    const [members, setMembers] = useState({ data: [] });
+  
+
+
 
   useEffect(() => {
     fetch("http://localhost:8000/api/team")
       .then((resp) => resp.json())
       .then((data) => setMembers(data));
+
   }, []);
 
     
@@ -23,8 +32,8 @@ const TeamList = () => {
     return (
       <MemberCard
         fullName={element.fullname}
+        photo={!(index%2)?userImage1:index%3? userImage4: userImage3}
         post={element.post}
-        photo={element.photo}
         additionalInfo={element.additionalInfo}
       />
     );

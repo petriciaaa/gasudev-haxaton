@@ -7,48 +7,66 @@ import { Routes, useRoutes } from "react-router";
 import { Route } from "react-router";
 import TeamEditForm from "./TeamEditForm";
 import NewsEditForm from "./NewsEditForm";
+import UsersEditForm from "./UsersEditForm";
+import {useSelector} from "react-redux"
 
 const Dashboard = () => {
 
   const location = useLocation()
+  const isAdmin = useSelector <any,any>(state => state.adminReducer)
+
+
+  
+
   return (
     <>
-      <section className="dashboard h-auto w-auto flex   ">
+      {isAdmin && <section className="dashboard h-auto w-auto flex   ">
         <nav className="sidebar flex flex-col items-start ">
           <div className="sidebar-wrapper  w-full">
             <NavLink
               className=" nav__element "
-              to={`/dashboard`}
+              to={`/dashboard/news_edit`}
               
             >
               <button>
                 <span> Новости</span>
               </button>
             </NavLink>
-            <NavLink className=" nav__element" to={`/dashboard/team_edit`}  >
+            <NavLink className="nav__element" to={`/dashboard/team_edit`}  >
               <button>
                 <span>Состав </span>
               </button>
             </NavLink>
+            <NavLink className="nav__element" to={`/dashboard/users_edit`}  >
+              <button>
+                <span>Пользователи</span>
+              </button>
+            </NavLink>
           </div>
         </nav>
-        <div className="dashboard__edit w-full">
-                  
+        <div className="dashboard__edit">
+
             <Routes>
-              <Route path={`${location.pathname}`} element={<NewsEditForm />}>
-                {" "}
+              <Route path='/news_edit' element={<NewsEditForm />}>
+                {""}
               </Route>
               <Route
-                path={`${location.pathname}/team_edit`}
+                path='/team_edit'
                 element={<TeamEditForm />}
               >
-                {" "}
+                {""}
+              </Route>
+              <Route
+                path='/users_edit'
+                element={<UsersEditForm/>}
+              >
+                {""}
               </Route>
             </Routes> 
       
  
         </div>
-      </section>
+      </section>}
     </>
   );
 };

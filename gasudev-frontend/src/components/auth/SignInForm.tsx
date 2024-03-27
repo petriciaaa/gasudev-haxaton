@@ -26,6 +26,7 @@ interface INewUser {
 }
 
 const SignInForm = (props: IPropsLoginForm) => {
+  const isAuth = useSelector<any, any>((state) => state.authReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { feedbackOk, feedbackErr } = props;
@@ -47,14 +48,17 @@ const SignInForm = (props: IPropsLoginForm) => {
     prev === "off" ? setCheckBoxValue("on") : setCheckBoxValue("off");
   };
 
-  const handleSubmitClick = async () => {
+  const handleSubmitClick = async event => {
     
+    event.preventDefault();
+    event.stopPropagation();
+
     const user = {
       name: userNameInputRef.current.value,
       password: passswordInputRef.current.value,
     };
 
-    const resp = await fetch('http://localhost:8000/api/login', {
+    await fetch('http://localhost:8000/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -62,49 +66,55 @@ const SignInForm = (props: IPropsLoginForm) => {
          password: passswordInputRef.current.value,
       }),
     }).then(resp => resp.json())
-      console.log("test-post")  
-    //делаем Post и передаем user
+      .then(resp => {
+        if (resp.data) {
+       
+          user["name"] = resp.data.name;
+          user["password"] =resp.data.password;
+          user["surname"] = resp.data.surname;
+          user["username"] = resp.data.username;
+          let validatedFieldsCounter = 0;
+          for (let key in user) {
+            if (user[key] && validationFormFields(user[key])) {
+              validatedFieldsCounter++;
+            }
+          }
+    
+          // if (
+          //   validatedFieldsCounter === Object.keys(user).length &&
+          //   checkBoxInputRef.current.value === "on"
+          // ) { resp.data.role
+            const action = { type: "LOG-IN", payload: user };
+            localStorage.setItem("currentUser", JSON.stringify({
+              username: resp.data.username,
+              name: resp.data.name,
+              surname: resp.data.surname,
+              password: passswordInputRef.current.value, 
+              id: resp.data.id, 
+            }));
+            
+          
+    
+    
+            localStorage.setItem("isCurrentUserAdmin",JSON.stringify(resp.data.role))
+            localStorage.setItem("isAuth",JSON.stringify("true"))
+          
+            dispatch(action);
+            dispatch({type:"SET-AUTH-VALUE",payload:true});
+            navigate("/");
+            window.location.reload()
+            //Весьма спрорно
+    
+            //window.location.reload();
+          // } else {
+          //   alert("Введите подходящие значения");
+          // }
+        }
+      })
+
 
     
-    if (resp.data) {
-       
-      user["name"] = resp.data.name;
-      user["password"] =resp.data.password;
-      user["surname"] = resp.data.surname;
-      user["username"] = resp.data.username;
-      let validatedFieldsCounter = 0;
-      for (let key in user) {
-        if (user[key] && validationFormFields(user[key])) {
-          validatedFieldsCounter++;
-        }
-      }
 
-      // if (
-      //   validatedFieldsCounter === Object.keys(user).length &&
-      //   checkBoxInputRef.current.value === "on"
-      // ) { resp.data.role
-        const action = { type: "LOG-IN", payload: user };
-        localStorage.setItem("currentUser", JSON.stringify({
-          username: resp.data.username,
-          name: resp.data.name,
-          surname: resp.data.surname,
-          password: passswordInputRef.current.value, 
-          id: resp.data.id, 
-        }));
-        
-
-
-        localStorage.setItem("isCurrentUserAdmin",JSON.stringify(resp.data.role))
-      
-        dispatch(action);
-        navigate("/profile");
-        //Весьма спрорно
-
-        window.location.reload();
-      // } else {
-      //   alert("Введите подходящие значения");
-      // }
-    }
     }
 
     // if (true) {
@@ -187,7 +197,7 @@ const SignInForm = (props: IPropsLoginForm) => {
         </Form.Group>
         <Button
           className="ml-4 submit__btn"
-          type="submit"
+          // type="submit"
           variant="outline-primary"
           onClick={handleSubmitClick}
         >

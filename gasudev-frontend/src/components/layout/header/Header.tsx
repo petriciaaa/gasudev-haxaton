@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MenuIcon } from "@heroicons/react/outline";
 import { ReactComponent as Home } from "src/assets/icons/home.svg";
 import { ReactComponent as Dashboard } from "src/assets/icons/dashboard.svg";
@@ -17,8 +17,14 @@ const Header: React.FC = () => {
   const username = useSelector<any, any>(
     (state) => state.registrationReducer.username
   );
-  const isAdmin = useSelector<any, any>((state) => state.adminReducer);
 
+  
+  const isAdmin = useSelector<any, any>((state) => state.adminReducer);
+  const isAuth = useSelector <any,any>(state => state.authReducer)
+    console.log(isAuth);
+    
+  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -75,16 +81,28 @@ const Header: React.FC = () => {
           )}
         </nav>
 
-        <div className="header__login mr-7">
+        <div className="header__login mr-7 flex items center ">
           <NavLink
             to={username.toLowerCase() === "login" ? "/login" : "/profile"}
           >
             <button className="header__login__btn rounded-3xl flex items-center justify-center">
               {username.toLowerCase() != "login" ? <Account /> : <Login />}
 
-              <span className="login__btn-text ml-2">{username}</span>
+              <span className="login__btn-text ml-2">{username?username: "Login"}</span>
             </button>
           </NavLink>
+         {(isAuth== "true") && <button className="header__login__btn header__login__btn-logout rounded-3xl flex items-center justify-center ml-2" onClick={ ()=>{
+          
+                localStorage.removeItem('currentUser')
+                localStorage.setItem('isAuth',"false")
+                navigate("/");
+                window.location.reload()
+             
+   
+              }}>
+
+              <span className="login__btn-text ml-2" >{"Log out"}</span>
+            </button>}
         </div>
       </div>
       <button
@@ -144,13 +162,26 @@ const Header: React.FC = () => {
             )}
           </nav>
           <div className="mt-4">
-            <NavLink to={username === "Login" ? "/login" : "/profile"}>
-              <button className="header__login__btn rounded-3xl flex items-center justify-center">
-                {username != "Login" ? <Account /> : <Login />}
+          <NavLink
+            to={username.toLowerCase() === "login" ? "/login" : "/profile"}
+          >
+            <button className="header__login__btn rounded-3xl flex items-center justify-center ml-1">
+              {username.toLowerCase() != "login" ? <Account /> : <Login />}
 
-                <span className="login__btn-text ml-2">{username}</span>
-              </button>
-            </NavLink>
+              <span className="login__btn-text ml-2">{username?username: "Login"}</span>
+            </button>
+          </NavLink>
+         { (isAuth== "true")  &&<button className="header__login__btn rounded-3xl flex items-center justify-center ml-2" onClick={ ()=>{
+            
+            localStorage.removeItem('currentUser')
+            localStorage.setItem('isAuth',"false")
+        
+            navigate("/");
+            window.location.reload()
+              }}>
+
+              <span className="login__btn-text ml-2" >{"Log out"}</span>
+            </button>}
           </div>
         </div>
       )}

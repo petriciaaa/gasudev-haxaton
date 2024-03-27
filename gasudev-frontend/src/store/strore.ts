@@ -3,6 +3,7 @@ import {
   loginReducer,
   registrationReducer,
   changeUserInfoReducer,
+  authReducer,
 } from "./reducers/authReducers";
 import { IInitialState } from "./../types/store";
 import { teamReducer } from "./reducers/teamReducers";
@@ -12,7 +13,9 @@ import { adminReducer } from "./reducers/adminReducers";
 
 //Init store
 export const initialState: IInitialState = {
-  isAuth: false,
+  isAuth:  localStorage.getItem("isAuth")
+  ? JSON.parse(localStorage.getItem("isAuth"))
+  : "false",
   isAdmin: localStorage.getItem("isCurrentUserAdmin")
     ? JSON.parse(localStorage.getItem("isCurrentUserAdmin"))
     : "user",
@@ -30,7 +33,7 @@ export const initialState: IInitialState = {
     tets: null,
   },
   council: {
-    totalMembers: 6,
+    totalMembers: null,
     membersInfo: [
       {
         id: 1,
@@ -91,6 +94,7 @@ const rootReducer = combineReducers({
   changeUserInfoReducer,
   teamReducer,
   adminReducer,
+  authReducer,
 });
 
 const store = legacy_createStore(rootReducer);

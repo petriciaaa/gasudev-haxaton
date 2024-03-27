@@ -52,3 +52,17 @@ export const changeUserInfoReducer = (
       return state;
   }
 };
+export const authReducer = (
+  state = initialState.isAuth,
+  action: { type: string; payload?: boolean }
+) => {
+  switch (action.type) {
+    case "GET-AUTH-VALUE":
+      return { state };
+    case "SET-AUTH-VALUE":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+

@@ -182,12 +182,12 @@ header {
     min-width: 180px;
     background-color: $white;
     font-family: "Open Sans";
-    background: $blue-accent;
+    background: $blue;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     padding: 1rem;
-    color: $black-soft;
+    color: $white;
     // border: 2px solid $black-soft;
     @media (max-width: 550px) {
       height: 60px;
@@ -201,4 +201,10 @@ header {
       color: $white;
     }
   }
+}
+
+
+.header__login__btn-logout{
+  color: $black;
+  background-color: $blue-accent;
 }

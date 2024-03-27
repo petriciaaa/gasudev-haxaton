@@ -12,7 +12,7 @@ const NewsList = () => {
             .then((data) => setNews(data));
     }, []);
 
-    const newsCards = news.data.map((news, index) => {
+    const newsCards = news.data.reverse().map((news, index) => {
         return (
             <article className="news">
                 <h3 className="news__title"> {news.title} </h3>

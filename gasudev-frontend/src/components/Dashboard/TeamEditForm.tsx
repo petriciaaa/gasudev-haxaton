@@ -106,12 +106,12 @@ const TeamEditForm: React.FC = () => {
 
   return (
     <>
-      <div className="team__edit w-full h-auto flex flex-col items-start p-5">
-        <h2 className="dashboard__team__title">
+      <div className="team__edit w-full h-auto flex flex-col items-start">
+        {/* <h2 className="dashboard__team__title">
           Всего участников: {teamInfo.totalMembers}
-        </h2>
+        </h2> */}
         <div className="current_team flex items-start justify-center w-full ">
-          <div className="current_team__add w-1/2 h-full  flex flex-col items-start justify-start  py-6 ">
+          <div className="current_team__add h-full  flex flex-col items-start justify-start  py-6 ">
             <p className="add__block__title">Добавьте нового участника</p>
             {/*  */}
             <div className="add__block-wrapper flex flex-col items-start mt-4 p-1 ">
@@ -164,7 +164,7 @@ const TeamEditForm: React.FC = () => {
             <button className="add__subimt" onClick={handleAdd}>Добавить</button>
           </div>
                 {/* Delete */}
-          <div className="current_team__delete w-1/2 h-full py-6">         
+          <div className="current_team__delete h-full py-6">         
           <p className="add__block__title">Удалить участника</p>
             {/*  */}
             <div className="add__block-wrapper flex flex-col items-start mt-4 p-1 ">

@@ -47,10 +47,10 @@ const RegistrationForm = (props: IPropsLoginForm) => {
   const checkBoxInputRef = useRef(null);
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
     }
     setValidated(true);
   };
@@ -94,10 +94,14 @@ const RegistrationForm = (props: IPropsLoginForm) => {
           const action = { type: "REGISTRATION", payload: newUser };
 
           localStorage.setItem("currentUser", JSON.stringify(newUser));
-
+          localStorage.setItem("isAuth",JSON.stringify("true"))
+  
           dispatch(action);
-          navigate("/profile");
-
+          dispatch({type:"SET-AUTH-VALUE",payload:true});
+          console.log("asd");
+          
+          navigate("/");
+          
           //Весьма спрорно
           window.location.reload();
         }

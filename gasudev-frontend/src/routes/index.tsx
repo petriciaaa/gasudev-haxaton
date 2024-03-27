@@ -47,7 +47,7 @@ const rootRouter: IrootRouter[] = [
   },
   {
     name: "dashboard",
-    path: "/dashboard",
+    path: "/dashboard/*",
     element: <Dashboard />,
   },
   ,
