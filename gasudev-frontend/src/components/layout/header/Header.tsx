@@ -95,6 +95,7 @@ const Header: React.FC = () => {
           
                 localStorage.removeItem('currentUser')
                 localStorage.setItem('isAuth',"false")
+                localStorage.setItem("isCurrentUserAdmin",JSON.stringify("false"))
                 navigate("/");
                 window.location.reload()
              
@@ -175,6 +176,7 @@ const Header: React.FC = () => {
             
             localStorage.removeItem('currentUser')
             localStorage.setItem('isAuth',"false")
+            localStorage.setItem("isCurrentUserAdmin",JSON.stringify("false"))
         
             navigate("/");
             window.location.reload()

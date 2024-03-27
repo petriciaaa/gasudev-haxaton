@@ -95,6 +95,7 @@ const RegistrationForm = (props: IPropsLoginForm) => {
 
           localStorage.setItem("currentUser", JSON.stringify(newUser));
           localStorage.setItem("isAuth",JSON.stringify("true"))
+         
   
           dispatch(action);
           dispatch({type:"SET-AUTH-VALUE",payload:true});

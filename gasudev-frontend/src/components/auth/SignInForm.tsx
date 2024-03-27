@@ -98,7 +98,7 @@ const SignInForm = (props: IPropsLoginForm) => {
     
             localStorage.setItem("isCurrentUserAdmin",JSON.stringify(resp.data.role))
             localStorage.setItem("isAuth",JSON.stringify("true"))
-          
+
             dispatch(action);
             dispatch({type:"SET-AUTH-VALUE",payload:true});
             navigate("/");
