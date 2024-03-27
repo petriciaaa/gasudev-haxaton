@@ -28,7 +28,7 @@ class UserController extends Controller
             "username" => $request->username,
             "name" => $request->name,
             "surname" => $request->surname,
-            "password" => Hash::make($request->password)
+            "password" => $request->password
         ]);
 
         $user->save();

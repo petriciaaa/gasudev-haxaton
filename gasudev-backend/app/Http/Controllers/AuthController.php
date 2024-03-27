@@ -20,8 +20,10 @@ class AuthController extends Controller
             'password' => $request->password
         ];
 
-        if (Auth::attempt($credential)) {
-            $user = User::where('username', $request->username)->first();
+        $user = User::where('username', $request->username)->where('password', $request->password)->first();
+
+        if ($user) {
+            // $user = User::where('username', $request->username)->first();
             $token = Str::random(80);
             $user->api_token = $token;
             $user->save();

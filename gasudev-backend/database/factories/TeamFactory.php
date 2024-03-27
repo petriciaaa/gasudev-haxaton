@@ -17,8 +17,8 @@ class TeamFactory extends Factory
     public function definition(): array
     {
         return [
-            'fullname' => fake()->name(),
-            'post' => 'son of Bitch',
+            'fullname' => fake()->firstname() . ' ' . fake()->lastName(),
+            'post' => 'Студофис',
             'description' => fake()->realTextBetween($minNbChars = 10, $maxNbChars = 20, $indexSize = 2),
         ];
     }
