@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 
 Route::get('/user', function (Request $request) {
@@ -14,6 +15,7 @@ Route::get('/user', function (Request $request) {
 Route::apiResources([
     'users' => UserController::class,
     'news' => NewsController::class,
+    'team' => TeamController::class,
 ]);
 
 Route::controller(AuthController::class)->group(function () {

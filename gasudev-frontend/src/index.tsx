@@ -15,6 +15,14 @@ import App from "./components/App";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+// localStorage.setItem("currentUser",JSON.stringify({
+//   username: "Login",
+//   name: "Name",
+//   surname: "Surname",
+//   password: "0",
+//   id: null,
+// }))
+
 
 root.render(
   <HashRouter>

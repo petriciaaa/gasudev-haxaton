@@ -37,12 +37,12 @@ const Projects = () => {
   return (
     <section className="projects mt-24 w-full h-auto flex items-center justify-center  ">
       <div className="projects-wrapper  flex flex-col items-start justify-between p-3 ">
-        <span className="projects__name mb-8">
-          Лучшие проекты за последнее время
-        </span>
         <div className="projects__nav ">
           <h2 className="projects__nav__title mb-8">Наши проекты</h2>
         </div>
+        <span className="projects__name mb-8">
+          Лучшие проекты за последнее время
+        </span>
 
         <div className="swiper-wrapper w-full h-auto flex items-center justify-center">
           <div className="swiper  ">

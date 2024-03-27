@@ -10,19 +10,19 @@ const TeamList = () => {
   const totalMembers = teamInfo.totalMembers;
   const teamMembersInfo = teamInfo.membersInfo;
 
-  // const [members, setMembers] = useState();
+   const [members, setMembers] = useState({ data: [] });
 
-  // useEffect(() => {
-  //   fetch("https://jsonplaceholder.typicode.com/users")
-  //     .then((resp) => resp.json())
-  //     .then((data) => setMembers(data));
-  // }, []);
-  // console.log(members);
+  useEffect(() => {
+    fetch("http://localhost:8000/api/team")
+      .then((resp) => resp.json())
+      .then((data) => setMembers(data));
+  }, []);
 
-  const membersCards = teamMembersInfo.map((element, index) => {
+    
+  const membersCards = members.data.map((element, index) => {
     return (
       <MemberCard
-        fullName={element.fullName}
+        fullName={element.fullname}
         post={element.post}
         photo={element.photo}
         additionalInfo={element.additionalInfo}
@@ -34,7 +34,7 @@ const TeamList = () => {
     <>
       <section className="list w-full h-auto  flex flex-col items-center justify-center">
         <h1 className="list__title">Состав студенческого совета.</h1>
-        <div className="list-wrapper w-5/12 h-auto  flex flex-col items-center p-3 mt-10">
+        <div className="list-wrapper">
           {membersCards}
         </div>
       </section>

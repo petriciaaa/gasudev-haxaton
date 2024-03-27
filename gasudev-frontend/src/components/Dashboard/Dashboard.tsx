@@ -9,8 +9,8 @@ import TeamEditForm from "./TeamEditForm";
 import NewsEditForm from "./NewsEditForm";
 
 const Dashboard = () => {
-  const [val, setVal] = useState(true);
 
+  const location = useLocation()
   return (
     <>
       <section className="dashboard h-auto w-auto flex   ">
@@ -19,13 +19,13 @@ const Dashboard = () => {
             <NavLink
               className=" nav__element "
               to={`/dashboard`}
-              onClick={(prev) => setVal(!prev)}
+              
             >
               <button>
                 <span> Новости</span>
               </button>
             </NavLink>
-            <NavLink className=" nav__element" to={`/dashboard`}>
+            <NavLink className=" nav__element" to={`/dashboard/team_edit`}  >
               <button>
                 <span>Состав </span>
               </button>
@@ -33,22 +33,20 @@ const Dashboard = () => {
           </div>
         </nav>
         <div className="dashboard__edit w-full">
-          {/*           
-            // <Routes>
-            //   <Route path={`${location.pathname}`} element={<NewsEditForm />}>
-            //     {" "}
-            //   </Route>
-            //   <Route
-            //     path={`${location.pathname}/team_edit`}
-            //     element={"<TeamEditForm />"}
-            //   >
-            //     {" "}
-            //   </Route>
-            // </Routes> */}
-          {/* {location.pathname === "/dashboard" && visibleComponent}
-
-          {location.pathname !== "/dashboard/team_edit" && <TeamEditForm />} */}
-          {!val ? <NewsEditForm /> : <TeamEditForm />}
+                  
+            <Routes>
+              <Route path={`${location.pathname}`} element={<NewsEditForm />}>
+                {" "}
+              </Route>
+              <Route
+                path={`${location.pathname}/team_edit`}
+                element={<TeamEditForm />}
+              >
+                {" "}
+              </Route>
+            </Routes> 
+      
+ 
         </div>
       </section>
     </>

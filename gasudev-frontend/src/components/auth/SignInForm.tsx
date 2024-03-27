@@ -64,8 +64,10 @@ const SignInForm = (props: IPropsLoginForm) => {
     }).then(resp => resp.json())
       console.log("test-post")  
     //делаем Post и передаем user
+
+    
     if (resp.data) {
-      console.log(resp.data)  
+       
       user["name"] = resp.data.name;
       user["password"] =resp.data.password;
       user["surname"] = resp.data.surname;
@@ -80,14 +82,19 @@ const SignInForm = (props: IPropsLoginForm) => {
       // if (
       //   validatedFieldsCounter === Object.keys(user).length &&
       //   checkBoxInputRef.current.value === "on"
-      // ) {
+      // ) { resp.data.role
         const action = { type: "LOG-IN", payload: user };
         localStorage.setItem("currentUser", JSON.stringify({
           username: resp.data.username,
           name: resp.data.name,
           surname: resp.data.surname,
           password: passswordInputRef.current.value, 
+          id: resp.data.id, 
         }));
+        
+
+
+        localStorage.setItem("isCurrentUserAdmin",JSON.stringify(resp.data.role))
       
         dispatch(action);
         navigate("/profile");

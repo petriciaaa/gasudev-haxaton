@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./team.scss";
-
+import pidor from "src/assets/images/sasalka.jpg"
 interface IMemberCard {
   fullName: string;
   photo?: string | undefined;
@@ -12,12 +12,12 @@ interface IMemberCard {
 const MemberCard = ({ fullName, post, photo, additionalInfo }: IMemberCard) => {
   return (
     <>
-      <div className="member__card w-3/5 rounded-3xl p-3 my-3 flex flex-col items-center ">
+      <div className="member__card rounded-3xl p-3  flex flex-col items-center ">
         <div className="member__card__img">
           {photo ? (
-            <img src={photo} />
+            <img src={photo?photo:pidor} />
           ) : (
-            <img src="src/assets/images/quiz.png" alt="" />
+            <img src={pidor} alt="" />
           )}
         </div>
         <div className="member__card__description">

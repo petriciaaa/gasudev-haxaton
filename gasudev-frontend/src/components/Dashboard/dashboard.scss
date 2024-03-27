@@ -108,6 +108,10 @@
   font-family: "Open Sans";
   font-weight: 500;
   font-size: 18px;
+  input{
+    font-family: "Open Sans";
+    font-size: 24px;
+  }
 }
 .add__block-wrapper {
   input {
@@ -117,6 +121,11 @@
     border: 1px solid #cecece;
     background: $white;
     border-radius: 8px;
+  }
+  input {
+    font-family: "Open Sans";
+    font-weight: 500;
+    font-size: 18px;
   }
 }
 
@@ -146,4 +155,7 @@
     color: $white;
     border: 1px solid black;
   }
+
+
+
 }

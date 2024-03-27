@@ -62,15 +62,8 @@ const RegistrationForm = (props: IPropsLoginForm) => {
       validationFormFields(lastNameInputRef.current.value) &&
       validationFormFields(passswordInputRef.current.value) &&
       checkBoxInputRef.current.value === "on"
-      // checkBoxInputRef.current.value === "on" -Надл смотреть выше
+      // checkBoxInputRef.current.value === "on" -Надо смотреть выше
     ) {
-      console.log(checkBoxInputRef.current.value);
-      const newUser: INewUser = {
-        username: userNameInputRef.current.value,
-        name: firstNameInputRef.current.value,
-        surname: lastNameInputRef.current.value,
-        password: passswordInputRef.current.value,
-      };
 
       const resp = await fetch("http://localhost:8000/api/users", {
         method: "POST",
@@ -80,11 +73,22 @@ const RegistrationForm = (props: IPropsLoginForm) => {
           name: firstNameInputRef.current.value,
           surname: lastNameInputRef.current.value,
           password: passswordInputRef.current.value,
+ 
         }),
       }).then((resp) => resp.json());
-      console.log("test-post");
+
       //делаем Post и передаем user
-      if (resp.data) {
+      if (resp.data) {      
+        console.log("asd");
+        
+      const newUser: INewUser |any = {
+        username: userNameInputRef.current.value,
+        name: firstNameInputRef.current.value,
+        surname: lastNameInputRef.current.value,
+        password: passswordInputRef.current.value,
+        id:resp.data.id,
+      };
+
         //ВОТ ТУТ POST И ЕСЛИ прошел, то диспатчем
         if (true) {
           const action = { type: "REGISTRATION", payload: newUser };

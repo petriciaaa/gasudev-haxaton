@@ -21,6 +21,13 @@
   }
 }
 .list-wrapper {
+  margin-top: 100px;
+  width: 80%;
+  max-width: 1800px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+
   @media (max-width: 1500px) {
     width: 60%;
   }
@@ -33,6 +40,7 @@
   }
 }
 .member__card {
+  transition: 0.3s ease;
   height: 30rem;
   font-family: "Open Sans";
   font-size: 16px;
@@ -43,10 +51,11 @@
   align-items: start;
   justify-content: space-between;
 
-  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2),
-    1px 1px 0px 0 rgba(255, 255, 255, 0.2),
-    1px 1px 1px 0 rgba(255, 255, 255, 0.2), -1px 1px 1px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 0 #ccc;
 
+  &:hover{
+    transform: scale(1.02);
+  }
   @media (max-width: 1500px) {
   }
   @media (max-width: 1050px) {

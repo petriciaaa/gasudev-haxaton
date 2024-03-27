@@ -29,7 +29,7 @@ const Card = (props: IPropsCard) => {
             <h2 className="card__info__title mt-9"> {title}</h2>
             <p className="card__info__description mt-6">{description}</p>
 
-            <div className="card__info__form flex items-center justify-start w-min h-max mt-6  rounded-3xl ">
+            {/* <div className="card__info__form flex items-center justify-start w-min h-max mt-6  rounded-3xl ">
               <input
                 type="text"
                 placeholder={inputPlaceHolder}
@@ -41,7 +41,7 @@ const Card = (props: IPropsCard) => {
                   {btnText}
                 </button>
               </NavLink>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* Image */}

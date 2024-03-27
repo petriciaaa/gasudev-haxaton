@@ -18,7 +18,6 @@ const Header: React.FC = () => {
     (state) => state.registrationReducer.username
   );
   const isAdmin = useSelector<any, any>((state) => state.adminReducer);
-  console.log(isAdmin);
 
   const dispatch = useDispatch();
 
@@ -65,7 +64,7 @@ const Header: React.FC = () => {
             {/* {<GasuSite />} */}
             СПБГАСУ
           </NavLink>
-          {isAdmin && (
+          {isAdmin==="admin" && (
             <NavLink
               to={"/dashboard"}
               className="header__nav__element flex link mr-7  "
@@ -134,7 +133,7 @@ const Header: React.FC = () => {
               {<GasuSite />}
               СПБГАСУ
             </NavLink>
-            {isAdmin && (
+            {isAdmin ==="admin" &&(
               <NavLink
                 to={"/dashboard"}
                 className="header__nav__element flex link mr-7  items-center justify-center "

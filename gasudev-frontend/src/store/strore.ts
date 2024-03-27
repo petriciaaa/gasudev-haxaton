@@ -15,7 +15,7 @@ export const initialState: IInitialState = {
   isAuth: false,
   isAdmin: localStorage.getItem("isCurrentUserAdmin")
     ? JSON.parse(localStorage.getItem("isCurrentUserAdmin"))
-    : true,
+    : "user",
   user: localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser"))
     : {
@@ -23,6 +23,7 @@ export const initialState: IInitialState = {
         name: "Name",
         surname: "Surname",
         password: "hash",
+        id: null,
       },
   login: {
     user: null,

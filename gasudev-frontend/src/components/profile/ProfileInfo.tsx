@@ -41,12 +41,13 @@ const ProfileInfo = () => {
     elementRef.current.focus();
   };
 
-  const handleSubmitChange = () => {
+  const handleSubmitChange = async() => {
     const currentUserNewIfo = {
       username: userNameRef.current.value,
       name: nameRef.current.value,
       surname: surNameRef.current.value,
       password: password,
+      id: JSON.parse(localStorage.getItem("currentUser")).id
     };
     let validatedFieldsCounter = 0;
     for (let key in currentUserNewIfo) {
@@ -57,11 +58,31 @@ const ProfileInfo = () => {
         validatedFieldsCounter++;
       }
     }
-    if (validatedFieldsCounter == Object.keys(currentUserNewIfo).length) {
+    if (validatedFieldsCounter === Object.keys(currentUserNewIfo).length) {
+      // username: currentUserNewIfo.username,
+      // name: currentUserNewIfo.name,
+      // surname: currentUserNewIfo.surname,
+      // password: currentUserNewIfo.password,
+
+      const user = JSON.parse(localStorage.getItem("currentUser"))
+
+      const resp = await fetch(`http://localhost:8000/api/users/${user.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          
+          username: currentUserNewIfo.username,
+          name: currentUserNewIfo.name,
+          surname: currentUserNewIfo.surname,
+          password: currentUserNewIfo.password,
+          
+        }),
+      }).then(resp => resp.json())
       const action = { type: "CHANGE-USER-INFO", payload: currentUserNewIfo };
       localStorage.setItem("currentUser", JSON.stringify(currentUserNewIfo));
       dispatch(action);
-
+      console.log(resp);
+      
       //Весьма спрорно
       window.location.reload();
     } else {

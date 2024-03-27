@@ -16,17 +16,23 @@
     font-family: "Open Sans";
     font-size: 22px;
     font-weight: 400;
+    width: 100%;
+    text-align: center;
   }
 }
 .projects__nav {
+  width: 100%;
   &__title {
     font-family: "Open Sans Condensed";
     font-size: 50px;
     font-weight: 700;
+    width: 100%;
+    text-align: center;
   }
 }
 .swiper {
   width: 100%;
+  padding: 20px 0;
 }
 
 // item
