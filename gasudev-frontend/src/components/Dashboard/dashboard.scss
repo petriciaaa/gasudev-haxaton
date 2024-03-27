@@ -110,4 +110,40 @@
   font-size: 18px;
 }
 .add__block-wrapper {
+  input {
+    width: 300px;
+    font-size: 13px;
+    padding: 6px 0 4px 10px;
+    border: 1px solid #cecece;
+    background: $white;
+    border-radius: 8px;
+  }
+}
+
+.add__block__title {
+  font-family: "Open Sans";
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.add__subimt {
+  border-radius: 1rem;
+  border: 1px solid $blue-accent;
+  background-color: $white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  font-weight: 500;
+  font-size: 18px;
+  color: $black;
+  transition: 0.1s ease-in;
+  margin-top: 2rem;
+  font-family: "Open Sans";
+  font-size: 18px;
+  &:hover {
+    background-color: $blue-accent;
+    color: $white;
+    border: 1px solid black;
+  }
 }

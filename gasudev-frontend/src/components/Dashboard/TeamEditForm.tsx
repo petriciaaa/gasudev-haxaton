@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //Do not forget to use useEffect hook!
@@ -12,14 +12,28 @@ const TeamEditForm: React.FC = () => {
   const [newMemberPost, setNewMemberPost] = useState("");
   const [newMemberDescription, setNewMemberDescription] = useState("");
 
-  const newMemberNameRef = null;
-  const newMemberSurnameRef = null;
-  const newMemberPostRef = null;
-  const newMemberDescriptionRef = null;
+  const newMemberNameRef = useRef(null);
+  const newMemberSurnameRef = useRef(null);
+  const newMemberPostRef = useRef(null);
+  const newMemberDescriptionRef = useRef(null);
 
-  // const = newTeamMembe = {
-
-  // }
+  if (
+    newMemberNameRef.current &&
+    newMemberSurnameRef.current &&
+    newMemberPostRef.current &&
+    newMemberDescriptionRef.current
+  ) {
+    const newTeamMember = {
+      id: teamInfo.totalMembers,
+      fullName:
+        String(newMemberNameRef.current.value) +
+        " " +
+        String(newMemberSurnameRef.current.value),
+      post: newMemberPostRef.current.value,
+      additionalInfo: newMemberDescriptionRef.current.value,
+    };
+    console.log(newTeamMember);
+  }
 
   const handleChange = (event, setFunction) => {
     setFunction(event.target.value);
@@ -33,12 +47,13 @@ const TeamEditForm: React.FC = () => {
           Всего участников: {teamInfo.totalMembers}
         </h2>
         <div className="current_team flex items-center justify-between w-full ">
-          <div className="current_team__add w-1/2 h-full  flex flex-col items-start justify-center ">
-            <p>Добавьте нового участника</p>
+          <div className="current_team__add w-1/2 h-full  flex flex-col items-start justify-center py-6 ">
+            <p className="add__block__title">Добавьте нового участника</p>
             {/*  */}
-            <div className="add__block-wrapper flex flex-col items-start ">
+            <div className="add__block-wrapper flex flex-col items-start mt-4 p-1 ">
               <span>Имя</span>
               <input
+                ref={newMemberNameRef}
                 type="text"
                 onChange={(event) => handleChange(event, setNewMember)}
                 value={newMemberName}
@@ -46,40 +61,45 @@ const TeamEditForm: React.FC = () => {
               />
             </div>
             {/*  */}
-            <p>Добавьте нового участника</p>
-            <div className="add__block-wrapper flex flex-col items-start ">
-              <span>Имя</span>
+
+            <div className="add__block-wrapper flex flex-col items-start mt-4 p-1 ">
+              <span>Фамилия</span>
               <input
+                ref={newMemberSurnameRef}
                 type="text"
                 onChange={(event) => handleChange(event, setNewMemberSurname)}
                 value={newMemberSurname}
-                className="mt-5"
+                className=""
               />
             </div>
             {/*  */}
-            <div className="add__block-wrapper flex flex-col items-start ">
-              <span>Имя</span>
+            <div className="add__block-wrapper flex flex-col items-start mt-4 p-1 ">
+              <span>Должность</span>
               <input
+                ref={newMemberPostRef}
                 type="text"
                 onChange={(event) => handleChange(event, setNewMemberPost)}
                 value={newMemberPost}
-                className="mt-5"
+                className=""
               />
             </div>
             {/*  */}
             {/*  */}
-            <div className="add__block-wrapper flex flex-col items-start">
-              <span>Имя</span>
+            <div className="add__block-wrapper flex flex-col items-start mt-4 p-1">
+              <span>Дополнительная инфромация</span>
               <input
+                ref={newMemberDescriptionRef}
                 type="text"
                 onChange={(event) =>
                   handleChange(event, setNewMemberDescription)
                 }
                 value={newMemberDescription}
-                className="mt-5"
+                className=""
               />
             </div>
+            <button className="add__subimt">Добавить</button>
           </div>
+
           <div className="current_team__delete w-1/2 h-full"></div>
         </div>
       </div>
