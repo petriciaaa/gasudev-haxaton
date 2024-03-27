@@ -71,33 +71,34 @@ const RegistrationForm = (props: IPropsLoginForm) => {
         surname: lastNameInputRef.current.value,
         password: passswordInputRef.current.value,
       };
-      
-    const resp = await fetch('http://localhost:8000/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+
+      const resp = await fetch("http://localhost:8000/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           username: userNameInputRef.current.value,
           name: firstNameInputRef.current.value,
           surname: lastNameInputRef.current.value,
-         password: passswordInputRef.current.value,
-      }),
-    }).then(resp => resp.json())
-      console.log("test-post")  
-    //делаем Post и передаем user
-    if (resp.data) {
-      //ВОТ ТУТ POST И ЕСЛИ прошел, то диспатчем
-      if (true) {
-        const action = { type: "REGISTRATION", payload: newUser };
+          password: passswordInputRef.current.value,
+        }),
+      }).then((resp) => resp.json());
+      console.log("test-post");
+      //делаем Post и передаем user
+      if (resp.data) {
+        //ВОТ ТУТ POST И ЕСЛИ прошел, то диспатчем
+        if (true) {
+          const action = { type: "REGISTRATION", payload: newUser };
 
-        localStorage.setItem("currentUser", JSON.stringify(newUser));
+          localStorage.setItem("currentUser", JSON.stringify(newUser));
 
-        dispatch(action);
-        navigate("/profile");
+          dispatch(action);
+          navigate("/profile");
 
-        //Весьма спрорно
-        window.location.reload();
+          //Весьма спрорно
+          window.location.reload();
+        }
       }
-    }}
+    }
   };
   return (
     <section className="form-wrapper">
@@ -182,7 +183,7 @@ const RegistrationForm = (props: IPropsLoginForm) => {
       <div className="form-annotation flex items-center justify-center ">
         <NavLink to={"/sign_in"}>
           <button className="rounded-3xl bg-slate-300 ">
-            У меня уже есть <strong>аккаунт.</strong>
+            У меня уже есть аккаунт.
           </button>
         </NavLink>
       </div>

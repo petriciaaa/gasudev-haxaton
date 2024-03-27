@@ -1,0 +1,102 @@
+@import "/src/assets/scss/colors.scss";
+
+.dashboard {
+}
+
+.sidebar {
+  width: max-content;
+  height: 80vh;
+  background-color: $white;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  margin-left: 2rem;
+
+  -webkit-animation: text-shadow-drop-center 0.6s both;
+  animation: text-shadow-drop-center 0.6s both;
+  &-wrapper {
+    margin-top: 20%;
+  }
+}
+
+.nav__element button {
+  transition: 0.3s ease;
+  border-radius: 0.4rem;
+
+  padding-left: 0.5rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  width: 100%;
+  background-color: $white;
+
+  padding: 5px;
+  margin-bottom: 1rem;
+  font-family: "Open Sans";
+  font-weight: 500;
+  font-size: 24px;
+  font-optical-sizing: auto;
+  position: relative;
+
+  & span {
+    &:after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      display: block;
+      width: 0;
+      height: 2px;
+      background: $blue-accent;
+      transition: 0.3s;
+    }
+    &:after {
+      left: 47%;
+      transform: translate(-47%);
+    }
+    &:hover:after {
+      width: 94%;
+    }
+  }
+}
+
+.nav__element button:active {
+  background-color: $blue-accent;
+  color: $white;
+}
+.sidebar .active > button {
+  background-color: $blue-accent;
+  color: $white;
+
+  /* Add other styles if desired */
+}
+
+.dashboard__edit {
+  margin-right: 2rem;
+  margin-left: 0.5rem;
+
+  height: 80vh;
+  background-color: $blue-verysoft;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+
+  -webkit-animation: text-shadow-drop-center 0.6s both;
+  animation: text-shadow-drop-center 0.6s both;
+}
+
+@-webkit-keyframes text-shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes text-shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  }
+}

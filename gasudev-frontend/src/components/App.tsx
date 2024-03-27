@@ -5,6 +5,7 @@ import Footer from "./layout/footer/Footer";
 import RootRouter from "./../routes/RootRouter";
 import { useLocation } from "react-router";
 import "src/assets/scss/main.scss";
+
 const App = () => {
   const baseUrl = "/";
   const currentPath = useLocation();
