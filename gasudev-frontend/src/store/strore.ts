@@ -29,15 +29,17 @@ export const initialState: IInitialState = {
     tets: null,
   },
   council: {
-    totalMembers: 2,
+    totalMembers: 6,
     membersInfo: [
       {
+        id: 1,
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,
         additionalInfo: null,
       },
       {
+        id: 2,
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,
@@ -45,6 +47,7 @@ export const initialState: IInitialState = {
           "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
       },
       {
+        id: 3,
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,
@@ -52,6 +55,7 @@ export const initialState: IInitialState = {
           "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
       },
       {
+        id: 4,
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,
@@ -59,6 +63,7 @@ export const initialState: IInitialState = {
           "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
       },
       {
+        id: 5,
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,
@@ -66,20 +71,7 @@ export const initialState: IInitialState = {
           "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
       },
       {
-        fullName: "Ivan Govnoed",
-        post: "son of a bitch",
-        photo: pidrila,
-        additionalInfo:
-          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
-      },
-      {
-        fullName: "Ivan Govnoed",
-        post: "son of a bitch",
-        photo: pidrila,
-        additionalInfo:
-          "apsd ddddddd ddd dddddddddddd  ddddddddddddd dddddd ddd ddddddd ddddddd dddd apsdddddd  ddddddd dddddd  ddddddddd dddd d dddddddd dddddd dd dddddd ddddddd",
-      },
-      {
+        id: 6,
         fullName: "Ivan Govnoed",
         post: "son of a bitch",
         photo: pidrila,

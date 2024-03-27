@@ -9,31 +9,24 @@ import TeamEditForm from "./TeamEditForm";
 import NewsEditForm from "./NewsEditForm";
 
 const Dashboard = () => {
-  const [currentComponent, setCurrentComponent] = useState(<NewsEditForm />);
+  const [val, setVal] = useState(true);
 
-  const location = useLocation();
-
-  // Пиздец костыль
-
-  const [visibleComponent, setVisibleComponent] = useState(<NewsEditForm />);
-
-  const switchComponent = (component) => {
-    setVisibleComponent(component);
-  };
   return (
     <>
       <section className="dashboard h-auto w-auto flex   ">
         <nav className="sidebar flex flex-col items-start ">
           <div className="sidebar-wrapper  w-full">
-            <NavLink className=" nav__element " to={`${location.pathname}`}>
-              <button onClick={() => setCurrentComponent(<NewsEditForm />)}>
-                {" "}
+            <NavLink
+              className=" nav__element "
+              to={`/dashboard`}
+              onClick={(prev) => setVal(!prev)}
+            >
+              <button>
                 <span> Новости</span>
               </button>
             </NavLink>
-            <NavLink className=" nav__element" to={`/dashboard/team_edit`}>
-              <button onClick={() => switchComponent(<TeamEditForm />)}>
-                {" "}
+            <NavLink className=" nav__element" to={`/dashboard`}>
+              <button>
                 <span>Состав </span>
               </button>
             </NavLink>
@@ -52,9 +45,10 @@ const Dashboard = () => {
             //     {" "}
             //   </Route>
             // </Routes> */}
-          {location.pathname === "/dashboard" && visibleComponent}
+          {/* {location.pathname === "/dashboard" && visibleComponent}
 
-          {location.pathname === "/dashboard/team_edit" && <TeamEditForm />}
+          {location.pathname !== "/dashboard/team_edit" && <TeamEditForm />} */}
+          {!val ? <NewsEditForm /> : <TeamEditForm />}
         </div>
       </section>
     </>

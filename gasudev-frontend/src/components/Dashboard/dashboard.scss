@@ -1,11 +1,8 @@
 @import "/src/assets/scss/colors.scss";
 
-.dashboard {
-}
-
 .sidebar {
   width: max-content;
-  height: 80vh;
+  min-height: 80vh;
   background-color: $white;
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
@@ -75,7 +72,7 @@
   margin-right: 2rem;
   margin-left: 0.5rem;
 
-  height: 80vh;
+  min-height: 80vh;
   background-color: $blue-verysoft;
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
@@ -99,4 +96,18 @@
   100% {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
   }
+}
+
+.dashboard__team__title {
+  font-family: "Open Sans";
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.dashboard {
+  font-family: "Open Sans";
+  font-weight: 500;
+  font-size: 18px;
+}
+.add__block-wrapper {
 }
